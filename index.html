@@ -17,6 +17,7 @@
     --cage: url("images/hero.jpg");
     --fighter1: url("images/fighter1.jpg");
     --hero-img: var(--cage);
+    --hero-pos: center right;
     --train-img: var(--fighter1);
     --train-pos: 50% 16%;
   }
@@ -84,7 +85,7 @@
   .hero{position:relative;overflow:hidden;padding:clamp(28px,4vw,52px) 0 clamp(26px,3.5vw,46px);
     background-color:var(--ink);border-bottom:1px solid var(--line)}
   .hero::before{content:"";position:absolute;top:0;right:0;bottom:0;width:min(64%,860px);z-index:0;
-    background-image:var(--hero-img);background-size:cover;background-position:center right;
+    background-image:var(--hero-img);background-size:cover;background-position:var(--hero-pos);
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 24%, rgba(0,0,0,.75) 52%, #000 74%);
             mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 24%, rgba(0,0,0,.75) 52%, #000 74%)}
   .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -413,7 +414,7 @@
   <input type="tel" name="phone"><input type="text" name="preferred"><input type="text" name="bot-field">
 </form>
 
-<script>(function(){if(Math.random()<0.5){document.documentElement.style.setProperty("--hero-img","var(--fighter1)");}})();</script>
+<script>(function(){if(Math.random()<0.5){var d=document.documentElement.style;d.setProperty("--hero-img","var(--fighter1)");d.setProperty("--hero-pos","right 26%");}})();</script>
 
 <header>
   <div class="wrap nav">
