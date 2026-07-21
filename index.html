@@ -164,18 +164,20 @@
   @media(max-width:760px){#train::before{display:none} #train .sec-head,#train .grid-disc{max-width:none}}
 
   /* kids band */
-  .kids-band{margin-top:24px;border:1px solid var(--blood);overflow:hidden;
-    background:
-      linear-gradient(90deg, rgba(18,15,14,.97) 0%, rgba(18,15,14,.92) 34%, rgba(18,15,14,.42) 62%, rgba(18,15,14,.08) 100%),
-      var(--kids-img);
-    background-size:cover;background-position:center 90%;
-    display:flex;align-items:center;padding:34px;min-height:300px}
-  .kb-content{max-width:min(100%,530px)}
-  .kids-band .btn{margin-top:18px}
+  .kids-band{margin-top:24px;border:1px solid var(--blood);overflow:hidden;position:relative;
+    background:var(--kids-img);background-size:cover;background-position:center 34%;
+    min-height:520px;display:flex;align-items:flex-end}
+  .kids-band::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top, rgba(18,15,14,.98) 0%, rgba(18,15,14,.95) 13%, rgba(18,15,14,.6) 27%, rgba(18,15,14,.1) 46%, transparent 66%)}
+  .kb-content{position:relative;z-index:1;width:100%;padding:22px 28px 24px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap}
+  .kb-text{max-width:640px}
   .kids-band .eyebrow{color:var(--blood)}
-  .kids-band h3{font-size:clamp(26px,3.4vw,40px);margin:12px 0 12px}
-  .kids-band p{color:var(--bone);max-width:60ch;font-size:16px}
-  @media(max-width:760px){.kids-band{background:linear-gradient(rgba(18,15,14,.9),rgba(18,15,14,.82)),var(--kids-img);background-size:cover;background-position:center 88%;min-height:auto}}
+  .kids-band h3{font-size:clamp(18px,2.2vw,23px);margin:5px 0 6px;line-height:1.06}
+  .kids-band p{color:var(--bone);max-width:74ch;font-size:13px;line-height:1.5}
+  .kb-content .btn{flex:0 0 auto}
+  @media(max-width:640px){.kb-content{flex-direction:column;align-items:flex-start;gap:14px}
+    .kids-band{min-height:360px;background-position:center 42%}}
 
   /* pricing */
   .toggle{display:inline-flex;border:1px solid var(--line);background:var(--ink-1);margin-bottom:40px}
@@ -528,9 +530,11 @@
 
       <div class="kids-band reveal">
         <div class="kb-content">
-          <span class="eyebrow">Kids &amp; Juniors &middot; Ages 3&ndash;15</span>
-          <h3>Confidence, discipline and focus &mdash; built on the mats</h3>
-          <p>From toddlers to teens, our kids classes teach real skills in a safe, welcoming environment &mdash; Muay Thai, wrestling, BJJ and MMA, coached by pros who are brilliant with young people. Most parents notice the confidence first.</p>
+          <div class="kb-text">
+            <span class="eyebrow">Kids &amp; Juniors &middot; Ages 3&ndash;15</span>
+            <h3>Confidence, discipline and focus &mdash; built on the mats</h3>
+            <p>Muay Thai, wrestling, BJJ &amp; MMA in a safe, welcoming environment. Most parents notice the confidence first.</p>
+          </div>
           <a class="btn btn-red btn-lg" href="#register" data-kids>Book your kids' first session</a>
         </div>
       </div>
