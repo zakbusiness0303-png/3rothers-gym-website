@@ -16,6 +16,9 @@
     --wrap:1200px;
     --cage: url("images/hero.jpg");
     --fighter1: url("images/fighter1.jpg");
+    --hero-img: var(--cage);
+    --train-img: var(--fighter1);
+    --train-pos: 50% 16%;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -34,12 +37,13 @@
   .tnum{font-variant-numeric:tabular-nums}
 
   /* wordmark logo */
-  .wordmark{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);
-    font-weight:700;text-transform:uppercase;letter-spacing:.03em;line-height:1;color:var(--bone);white-space:nowrap}
-  .wordmark .wm-name{font-size:27px}
-  .wordmark .wm-3{color:var(--blood)}
+  .wordmark{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);
+    font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--bone);white-space:nowrap}
+  .wordmark .wm-glyph{height:26px;width:auto;color:var(--blood);display:block;flex:0 0 auto}
+  .wordmark .wm-name{font-size:27px;font-style:italic}
   .wordmark .wm-gym{color:#fff;border:2px solid var(--blood);border-radius:7px;
-    padding:3px 8px 2px;font-size:20px;letter-spacing:.06em}
+    padding:3px 8px 2px;font-size:20px;font-style:italic;letter-spacing:.05em}
+  .wordmark.sm .wm-glyph{height:21px}
   .wordmark.sm .wm-name{font-size:22px}
   .wordmark.sm .wm-gym{font-size:16px;padding:2px 6px}
 
@@ -80,7 +84,7 @@
   .hero{position:relative;overflow:hidden;padding:clamp(28px,4vw,52px) 0 clamp(26px,3.5vw,46px);
     background-color:var(--ink);border-bottom:1px solid var(--line)}
   .hero::before{content:"";position:absolute;top:0;right:0;bottom:0;width:min(64%,860px);z-index:0;
-    background-image:var(--cage);background-size:cover;background-position:center right;
+    background-image:var(--hero-img);background-size:cover;background-position:center right;
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 24%, rgba(0,0,0,.75) 52%, #000 74%);
             mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 24%, rgba(0,0,0,.75) 52%, #000 74%)}
   .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -147,7 +151,7 @@
   .disc[data-session]:focus-visible{outline:none;background:var(--ink-2)}
   #train{position:relative;overflow:hidden}
   #train::before{content:"";position:absolute;top:0;right:0;bottom:0;width:min(46%,620px);z-index:0;
-    background-image:var(--fighter1);background-size:cover;background-position:50% 16%;
+    background-image:var(--train-img);background-size:cover;background-position:var(--train-pos);
     filter:brightness(.8) saturate(1.02);
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 26%, rgba(0,0,0,.78) 54%, #000 78%);
             mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 26%, rgba(0,0,0,.78) 54%, #000 78%)}
@@ -219,6 +223,13 @@
   .privnote{font-size:13px;color:var(--mute);margin:-4px 0 16px;line-height:1.5}
   .privnote b{color:var(--gold)}
   .privnote a{color:var(--blood);font-weight:700}
+  .form-ok{text-align:center;padding:18px 4px}
+  .ok-tick{width:56px;height:56px;border-radius:50%;background:var(--blood);color:#fff;font-size:30px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .form-ok h3{font-size:26px;margin-bottom:8px}
+  .form-ok p{color:var(--mute);font-size:15px}
+  .ok-call{margin-top:14px}
+  .ok-call a{color:var(--blood);font-weight:700}
   @media(max-width:560px){.type-opts{grid-template-columns:1fr}}
 
   /* duration selector */
@@ -394,10 +405,20 @@
   }
 </style>
 
+<!-- Netlify Forms: hidden form so Netlify detects the fields on deploy -->
+<form name="booking" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="text" name="type"><input type="text" name="who"><input type="text" name="child">
+  <input type="text" name="session"><input type="text" name="discipline"><input type="text" name="experience">
+  <input type="text" name="duration"><input type="text" name="price"><input type="text" name="name">
+  <input type="tel" name="phone"><input type="text" name="preferred"><input type="text" name="bot-field">
+</form>
+
+<script>(function(){if(Math.random()<0.5){document.documentElement.style.setProperty("--hero-img","var(--fighter1)");}})();</script>
+
 <header>
   <div class="wrap nav">
     <a href="#top" class="wordmark" aria-label="3rothers Gym home">
-      <span class="wm-name"><span class="wm-3">3</span>ROTHERS</span><span class="wm-gym">GYM</span>
+      <svg class="wm-glyph" viewBox="-30 -4 138 124" aria-hidden="true"><g transform="skewX(-13)" fill="currentColor"><rect x="0" y="0" width="104" height="26"/><rect x="40" y="47" width="64" height="24"/><rect x="0" y="90" width="104" height="26"/><rect x="70" y="0" width="34" height="116"/></g></svg><span class="wm-name">ROTHERS</span><span class="wm-gym">GYM</span>
     </a>
     <nav class="nav-links" id="menu">
       <a href="#train">Training</a>
@@ -532,6 +553,23 @@
     </div>
   </section>
 
+  <!-- INSTAGRAM -->
+  <section id="instagram" style="border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">On the mats</span>
+        <h2>See it for yourself</h2>
+        <p class="lead">Straight from the gym floor &mdash; technique, kids smashing it, fight nights and the day-to-day. This is what you're signing up for.</p>
+      </div>
+      <div class="ig-feed reveal">
+        <behold-widget feed-id="KDdIiBI3almGe7eDN6S7"></behold-widget>
+      </div>
+      <div class="ig-more reveal">
+        <a class="btn btn-red btn-lg" href="https://www.instagram.com/3rothersgym/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> See more on Instagram @3rothersgym</a>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section id="pricing">
     <div class="wrap">
@@ -619,7 +657,7 @@
 
       <div class="form reveal" id="otoForm">
         <h3>Book private training</h3>
-        <p class="sub">Takes 30 seconds. Sends straight to the coaches on WhatsApp.</p>
+        <p class="sub">Takes 30 seconds. Sends straight to the coaches.</p>
         <div class="field">
           <label for="f-name">Your name</label>
           <input id="f-name" type="text" placeholder="e.g. Jordan Baker" autocomplete="name">
@@ -672,7 +710,7 @@
         </div>
         <button class="btn btn-red" id="sendOto" type="button">Send my enquiry</button>
         <p class="err" id="otoErr" role="alert"></p>
-        <p class="wa-note">Opens WhatsApp with your details ready to send.</p>
+        <p class="wa-note">Sends straight to the gym &mdash; we'll be in touch fast.</p>
       </div>
     </div>
   </section>
@@ -739,7 +777,7 @@
 
         <div class="form reveal" id="bookForm">
           <h3>Book your session</h3>
-          <p class="sub">Choose how you want to train &mdash; we'll confirm on WhatsApp, or just call.</p>
+          <p class="sub">Choose how you want to train &mdash; we'll get straight back to you, or just call.</p>
           <div class="field">
             <label>How do you want to train?</label>
             <div class="type-opts" id="typeOpts">
@@ -806,7 +844,7 @@
           </div>
           <button class="btn btn-red" id="sendBook" type="button">Register my interest</button>
           <p class="err" id="bookErr" role="alert"></p>
-          <p class="wa-note">Opens WhatsApp with your details ready to send.</p>
+          <p class="wa-note">Sends straight to the gym &mdash; we'll be in touch fast.</p>
           <p class="wa-note" style="margin-top:2px">or <a href="tel:+447496555708" style="color:var(--blood);font-weight:700">call us now on 07496 555708</a></p>
         </div>
       </div>
@@ -882,23 +920,6 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
-  <section id="instagram" class="band">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">On the mats</span>
-        <h2>Follow the journey</h2>
-        <p class="lead">Technique breakdowns, kids smashing it, fight nights and everything in between &mdash; straight from the gym floor. Give us a follow.</p>
-      </div>
-      <div class="ig-feed reveal">
-        <behold-widget feed-id="KDdIiBI3almGe7eDN6S7"></behold-widget>
-      </div>
-      <div class="ig-more reveal">
-        <a class="btn btn-red btn-lg" href="https://www.instagram.com/3rothersgym/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> See more on Instagram @3rothersgym</a>
-      </div>
-    </div>
-  </section>
-
   <!-- FINAL CTA -->
   <section class="finalcta">
     <div class="wrap">
@@ -921,7 +942,7 @@
 <footer>
   <div class="wrap foot">
     <a href="#top" class="wordmark sm" aria-label="3rothers Gym home">
-      <span class="wm-name"><span class="wm-3">3</span>ROTHERS</span><span class="wm-gym">GYM</span>
+      <svg class="wm-glyph" viewBox="-30 -4 138 124" aria-hidden="true"><g transform="skewX(-13)" fill="currentColor"><rect x="0" y="0" width="104" height="26"/><rect x="40" y="47" width="64" height="24"/><rect x="0" y="90" width="104" height="26"/><rect x="70" y="0" width="34" height="116"/></g></svg><span class="wm-name">ROTHERS</span><span class="wm-gym">GYM</span>
     </a>
     <span>Unit 5, 92 Chorlton Rd, Old Trafford, Manchester M15 4AL</span>
     <span><a href="https://wa.me/447496555708">WhatsApp 07496 555708</a> &middot; <a href="https://instagram.com/3rothersgym">@3rothersgym</a></span>
@@ -933,6 +954,25 @@
   function money(n){ return "\u00A3" + (n % 1 === 0 ? n : n.toFixed(2)); }
   function waLink(msg){ return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg); }
   function openWa(msg){ window.open(waLink(msg), "_blank"); }
+  function encodeForm(d){ return Object.keys(d).map(function(k){ return encodeURIComponent(k)+"="+encodeURIComponent(d[k]); }).join("&"); }
+  function submitBooking(data, formEl, errEl){
+    data["form-name"]="booking"; data["bot-field"]="";
+    var btn = formEl.querySelector(".btn"); var label = btn ? btn.textContent : "";
+    if(btn){ btn.disabled=true; btn.textContent="Sending..."; }
+    fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:encodeForm(data)})
+      .then(function(r){ if(!r.ok) throw new Error("http"); showBookingOk(formEl, data.name); })
+      .catch(function(){
+        if(errEl) errEl.innerHTML = "Couldn't send just now &mdash; please call or WhatsApp us on <a href=\"tel:+447496555708\">07496 555708</a>.";
+        if(btn){ btn.disabled=false; btn.textContent=label||"Send"; }
+      });
+  }
+  function showBookingOk(formEl, name){
+    var first = name ? (" "+name.split(" ")[0]) : "";
+    formEl.innerHTML = '<div class="form-ok"><div class="ok-tick">&#10003;</div>'
+      + '<h3>Thanks'+first+'!</h3>'
+      + '<p>We&rsquo;ve got your enquiry &mdash; we&rsquo;ll be in touch very soon.</p>'
+      + '<p class="ok-call">Can&rsquo;t wait? Call us on <a href="tel:+447496555708">07496 555708</a></p></div>';
+  }
 
   // mobile menu
   var burger = document.getElementById('burger'), menu = document.getElementById('menu');
@@ -1016,22 +1056,18 @@
     if(!name){ bookErr.textContent = "Pop your name in so we know who to reply to."; document.getElementById('r-name').focus(); return; }
     if(phone.replace(/\D/g,'').length < 7){ bookErr.textContent = "Add a phone number we can reach you on."; document.getElementById('r-phone').focus(); return; }
     bookErr.textContent = "";
-    var msg;
+    var data;
     if(bookType === "Regular group class"){
       var forWho = rFor.value;
       var child = document.getElementById('r-child').value.trim();
       var session = document.getElementById('r-session').value;
       if(forWho === "My child" && !child){ bookErr.textContent = "Add your child's name and age so we know who's coming."; document.getElementById('r-child').focus(); return; }
-      if(forWho === "My child"){
-        msg = "Hi 3rothers Gym! I'd like to book my child's first session.\n\nChild: " + child + "\nSession: " + session + "\nParent/Guardian: " + name + "\nPhone: " + phone + "\nPreferred: " + (when || "flexible");
-      } else {
-        msg = "Hi 3rothers Gym! I'd like to book my first session.\n\nSession: " + session + "\nName: " + name + "\nPhone: " + phone + "\nPreferred: " + (when || "flexible");
-      }
+      data = { type: bookType, who: forWho, session: session, name: name, phone: phone, preferred: (when || "") };
+      if(forWho === "My child") data.child = child;
     } else {
-      var disc = document.getElementById('p-disc2').value;
-      msg = "Hi 3rothers Gym! I'd like to enquire about " + (bookType === "Private 1-to-1" ? "private 1-to-1 training." : "small-group training (up to 4).") + "\n\nDiscipline: " + disc + "\nName: " + name + "\nPhone: " + phone + "\nPreferred: " + (when || "flexible");
+      data = { type: bookType, discipline: document.getElementById('p-disc2').value, name: name, phone: phone, preferred: (when || "") };
     }
-    openWa(msg);
+    submitBooking(data, document.getElementById('bookForm'), bookErr);
   });
 
   // 1-to-1 submit
@@ -1045,17 +1081,11 @@
     if(!name){ otoErr.textContent = "Pop your name in so the coaches know who to reply to."; document.getElementById('f-name').focus(); return; }
     if(phone.replace(/\D/g,'').length < 7){ otoErr.textContent = "Add a phone number we can reach you on."; document.getElementById('f-phone').focus(); return; }
     otoErr.textContent = "";
-    var type = fType.value;
-    var group = type !== "1-to-1";
-    var msg = "Hi 3rothers Gym! I'd like to book " + (group ? "a small-group session." : "a private 1-to-1 session.") + "\n\n"
-      + "Name: " + name + "\n"
-      + "Phone: " + phone + "\n"
-      + "Training as: " + type + "\n"
-      + "Experience: " + exp + "\n"
-      + "Discipline: " + disc + "\n"
-      + "Session: " + dur.min + " minutes" + (group ? " (small group, rate on request)" : " (" + money(dur.price) + ")") + "\n"
-      + "Preferred times: " + (when || "flexible");
-    openWa(msg);
+    var grp = fType.value !== "1-to-1";
+    var data = { type: (grp ? "Small group (up to 4)" : "Private 1-to-1"), discipline: disc, experience: exp,
+      duration: dur.min + " min", price: (grp ? "on request" : money(dur.price)),
+      name: name, phone: phone, preferred: (when || "") };
+    submitBooking(data, document.getElementById('otoForm'), otoErr);
   });
 
   // google reviews (real reviews, 3 shown at a time, reshuffled on load + on click)
