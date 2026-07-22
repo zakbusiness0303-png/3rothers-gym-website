@@ -1,5 +1,10 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>3rothers Gym &mdash; Old Trafford Fight &amp; Fitness</title></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3rothers Gym &mdash; Old Trafford Fight &amp; Fitness</title>
+</head>
 <body>
 <style>
   :root{
@@ -34,15 +39,9 @@
   .tnum{font-variant-numeric:tabular-nums}
 
   /* wordmark logo */
-  .wordmark{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);
-    font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--bone);white-space:nowrap}
-  .wordmark .wm-glyph{height:26px;width:auto;color:var(--blood);display:block;flex:0 0 auto}
-  .wordmark .wm-name{font-size:27px;font-style:italic}
-  .wordmark .wm-gym{color:#fff;border:2px solid var(--blood);border-radius:7px;
-    padding:3px 8px 2px;font-size:20px;font-style:italic;letter-spacing:.05em}
-  .wordmark.sm .wm-glyph{height:21px}
-  .wordmark.sm .wm-name{font-size:22px}
-  .wordmark.sm .wm-gym{font-size:16px;padding:2px 6px}
+  .wordmark{display:inline-flex;align-items:center;line-height:1}
+  .wordmark img{height:26px;width:auto;display:block}
+  .wordmark.sm img{height:22px}
 
   /* buttons */
   .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--display);
@@ -69,9 +68,9 @@
   header{position:sticky;top:0;z-index:50;background:rgba(20,17,16,.86);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
-  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links{display:flex;gap:22px;align-items:center}
   .nav-links a{font-family:var(--display);text-transform:uppercase;font-weight:700;
-    letter-spacing:.05em;font-size:15px;color:var(--mute);transition:.15s}
+    letter-spacing:.05em;font-size:15px;color:var(--mute);transition:.15s;white-space:nowrap}
   .nav-links a:hover{color:var(--bone)}
   .nav-cta{display:flex;align-items:center;gap:14px}
   .burger{display:none;background:none;border:0;color:var(--bone);cursor:pointer;padding:6px}
@@ -430,6 +429,7 @@
     .btn{white-space:normal;max-width:100%;text-align:center}
     .btn-lg{padding:15px 20px;font-size:16px}
     .kids-band .btn,.ig-more .btn{width:100%;justify-content:center}
+    .wordmark img{height:27px}
   }
 </style>
 
@@ -450,7 +450,7 @@
 <header>
   <div class="wrap nav">
     <a href="#top" class="wordmark" aria-label="3rothers Gym home">
-      <svg class="wm-glyph" viewBox="-30 -4 138 124" aria-hidden="true"><g transform="skewX(-13)" fill="currentColor"><rect x="0" y="0" width="104" height="26"/><rect x="40" y="47" width="64" height="24"/><rect x="0" y="90" width="104" height="26"/><rect x="70" y="0" width="34" height="116"/></g></svg><span class="wm-name">ROTHERS</span><span class="wm-gym">GYM</span>
+      <img class="brandimg" src="images/logo-brand.png" alt="3rothers Gym">
     </a>
     <nav class="nav-links" id="menu">
       <a href="#train">Training</a>
@@ -976,7 +976,7 @@
 <footer>
   <div class="wrap foot">
     <a href="#top" class="wordmark sm" aria-label="3rothers Gym home">
-      <svg class="wm-glyph" viewBox="-30 -4 138 124" aria-hidden="true"><g transform="skewX(-13)" fill="currentColor"><rect x="0" y="0" width="104" height="26"/><rect x="40" y="47" width="64" height="24"/><rect x="0" y="90" width="104" height="26"/><rect x="70" y="0" width="34" height="116"/></g></svg><span class="wm-name">ROTHERS</span><span class="wm-gym">GYM</span>
+      <img class="brandimg" src="images/logo-brand.png" alt="3rothers Gym">
     </a>
     <span>Unit 5, 92 Chorlton Rd, Old Trafford, Manchester M15 4AL</span>
     <span><a href="https://wa.me/447496555708">WhatsApp 07496 555708</a> &middot; <a href="https://instagram.com/3rothersgym">@3rothersgym</a></span>
@@ -1208,4 +1208,5 @@
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 </script>
 
-</body></html>
+</body>
+</html>
